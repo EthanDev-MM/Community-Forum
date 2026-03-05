@@ -1,46 +1,68 @@
 body {
-    font-family: 'Pyidaungsu', sans-serif; /* မြန်မာစာအတွက် */
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    font-family: sans-serif;
+    background-color: #f0f2f5;
+    margin: 0; padding: 0;
 }
 
 header {
-    background-color: #2c3e50;
+    background-color: #007bff;
     color: white;
-    padding: 1rem;
     text-align: center;
+    padding: 20px;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+.category-grid {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-#hero {
-    padding: 50px;
-    text-align: center;
+.category-grid button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
     background-color: white;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-button {
-    background-color: #e67e22;
+#post-form-section {
+    background: white;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input, textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
     color: white;
     border: none;
     padding: 10px 20px;
+    width: 100%;
     cursor: pointer;
+}
+
+.post-card {
+    background: white;
+    max-width: 600px;
+    margin: 15px auto;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.post-card img {
+    max-width: 100%;
     border-radius: 5px;
+    margin-top: 10px;
 }
