@@ -3,26 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Support Myanmar</title>
+    <title>Community Forum - Myanmar</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <h1>Community Support Myanmar</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#donate">Donate</a></li>
-            </ul>
-        </nav>
+        <h1>Community Forum</h1>
+        <p>မြန်မာပြည်သူများအတွက် အချင်းချင်းကူညီဖလှယ်ရာနေရာ</p>
     </header>
 
     <main>
-        <section id="hero">
-            <h2>မြန်မာပြည်သူများအတွက် အတူတကွ ကူညီကြပါစို့</h2>
-            <p>ကျွန်တော်တို့ အသိုက်အဝန်းကို ပိုမိုကောင်းမွန်အောင် တည်ဆောက်ကြမယ်။</p>
-            <button onclick="showInfo()">Learn More</button>
+        <section id="categories">
+            <h2>Categories</h2>
+            <div class="category-grid">
+                <button onclick="filterCategory('Housing')">🏠 Housing</button>
+                <button onclick="filterCategory('Employment')">💼 Employment</button>
+                <button onclick="filterCategory('Health')">🏥 Health</button>
+                <button onclick="filterCategory('General')">🌍 General</button>
+            </div>
+        </section>
+
+        <section id="post-form-section">
+            <h3>Post အသစ်တင်ရန်</h3>
+            <form id="postForm">
+                <input type="text" id="userName" placeholder="သင့်နာမည်" required>
+                <textarea id="postContent" placeholder="ဘာအကြောင်းအရာ ရေးသားချင်ပါသလဲ..." required></textarea>
+                
+                <label for="imageUpload">📸 ပုံတင်ရန်:</label>
+                <input type="file" id="imageUpload" accept="image/*">
+                
+                <button type="submit">Post တင်မည်</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="feed">
+            <h3>လတ်တလော တင်ထားမှုများ</h3>
+            <div id="postsContainer">
+                </div>
         </section>
     </main>
 
