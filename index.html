@@ -9,41 +9,40 @@
 <body>
 
     <header>
-        <h1>Community Forum</h1>
+        <h1 onclick="showHome()" style="cursor:pointer">Community Forum</h1>
         <p>မြန်မာပြည်သူများအတွက် အချင်းချင်းကူညီဖလှယ်ရာနေရာ</p>
     </header>
 
-    <main>
-        <section id="categories">
-            <h2>Categories</h2>
-            <div class="category-grid">
-                <button onclick="filterCategory('Housing')">🏠 Housing</button>
-                <button onclick="filterCategory('Employment')">💼 Employment</button>
-                <button onclick="filterCategory('Health')">🏥 Health</button>
-                <button onclick="filterCategory('General')">🌍 General</button>
-            </div>
-        </section>
-
-        <section id="post-form-section">
-            <h3>Post အသစ်တင်ရန်</h3>
-            <form id="postForm">
-                <input type="text" id="userName" placeholder="သင့်နာမည်" required>
-                <textarea id="postContent" placeholder="ဘာအကြောင်းအရာ ရေးသားချင်ပါသလဲ..." required></textarea>
-                
-                <label for="imageUpload">📸 ပုံတင်ရန်:</label>
-                <input type="file" id="imageUpload" accept="image/*">
-                
-                <button type="submit">Post တင်မည်</button>
-            </form>
-        </section>
-
-        <hr>
-
-        <section id="feed">
-            <h3>လတ်တလော တင်ထားမှုများ</h3>
-            <div id="postsContainer">
+    <main id="main-content">
+        <div id="home-page">
+            <section id="categories">
+                <h2>Categories</h2>
+                <div class="category-grid">
+                    <button onclick="openCategory('Housing', '🏠')">🏠 Housing</button>
+                    <button onclick="openCategory('Employment', '💼')">💼 Employment</button>
+                    <button onclick="openCategory('Health', '🏥')">🏥 Health</button>
+                    <button onclick="openCategory('General', '🌍')">🌍 General</button>
                 </div>
-        </section>
+            </section>
+        </div>
+
+        <div id="category-page" style="display: none;">
+            <button onclick="showHome()" class="back-btn">⬅ Back to Home</button>
+            <h2 id="category-title">Category Name</h2>
+            
+            <section id="post-form-section">
+                <h3>Post အသစ်တင်ရန်</h3>
+                <form id="postForm">
+                    <input type="text" id="userName" placeholder="သင့်နာမည်" required>
+                    <textarea id="postContent" placeholder="အကြောင်းအရာ ရေးသားပါ..." required></textarea>
+                    <input type="file" id="imageUpload" accept="image/*">
+                    <button type="submit">Post တင်မည်</button>
+                </form>
+            </section>
+
+            <hr>
+            <div id="postsContainer"></div>
+        </div>
     </main>
 
     <script src="script.js"></script>
