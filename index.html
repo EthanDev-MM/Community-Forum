@@ -620,8 +620,8 @@ footer {
     <li><a href="#emergency-section" onclick="scrollToEmergency(event)">🚨 အရေးပေါ်</a></li>
   </ul>
   <div class="nav-actions">
-    <button class="btn-login" onclick="openModal('login')">ဝင်ရောက်ရန်</button>
-    <button class="btn-register" onclick="openModal('register')">အကောင့်ဖွင့်ရန်</button>
+   <button class="btn-form" onclick="handleLogin()">ဝင်ရောက်ရန်</button>
+    <button class="btn-form" onclick="handleRegister()">🌟 အကောင့်ဖွင့်ရန်</button>
   </div>
 </nav>
 
@@ -1031,7 +1031,7 @@ footer {
   </div>
 </div>
 
-<script>
+<script type="module">
 // Nav click — switch tab AND scroll to feed
 function navClick(panel, e) {
   e.preventDefault();
@@ -1098,6 +1098,57 @@ document.querySelectorAll('.post-action').forEach(btn => {
     }
   });
 });
+  // --- Firebase Setup စတင်ခြင်း ---
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDKDz53Tymj6mVcWUj4VU9_vHvEidI28PU",
+  authDomain: "myanmar-community-th.firebaseapp.com",
+  projectId: "myanmar-community-th",
+  storageBucket: "myanmar-community-th.firebasestorage.app",
+  messagingSenderId: "224671858263",
+  appId: "1:224671858263:web:9529c7b1395bb54d736d12",
+  measurementId: "G-KHGQSE9PWG"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// Register Function ကို Window object ထဲထည့်မှ HTML က ခေါ်သုံးလို့ရပါမယ်
+window.handleRegister = async () => {
+  const email = document.querySelector('#form-register input[type="email"]').value;
+  const password = document.querySelector('#form-register input[type="password"]').value;
+  const username = document.querySelector('#form-register input[placeholder="Ko Min"]').value;
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    await setDoc(doc(db, "users", userCredential.user.uid), {
+      username: username,
+      email: email,
+      createdAt: new Date()
+    });
+    alert("အကောင့်ဖွင့်ခြင်း အောင်မြင်ပါပြီ!");
+    closeModal();
+  } catch (error) {
+    alert("အမှားရှိနေပါသည်: " + error.message);
+  }
+};
+
+window.handleLogin = async () => {
+  const email = document.querySelector('#form-login input[type="email"]').value;
+  const password = document.querySelector('#form-login input[type="password"]').value;
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    alert("ဝင်ရောက်ခြင်း အောင်မြင်ပါပြီ!");
+    closeModal();
+  } catch (error) {
+    alert("အမှားရှိနေပါသည်: " + error.message);
+  }
+};
 </script>
 </body>
 </html>
